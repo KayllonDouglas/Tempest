@@ -1,20 +1,22 @@
 package com.github.kayllondouglas.faction
 
-import com.github.kayllondouglas.Core
-import java.util.UUID
+import java.util.*
 
-class FactionManager(core: Core) {
+class FactionManager() {
+    companion object {
 
-    object FactionsMap : HashMap<String, Faction>()
+        object FactionsMap : HashMap<String, Faction>()
 
-    fun getFaction(name: String): Faction? = FactionsMap[name]
+        fun getFaction(name: String) = FactionsMap[name]
 
-    fun deleteFaction(name: String) = FactionsMap.remove(name)
+        fun deleteFaction(name: String) = FactionsMap.remove(name)
 
-    fun getTag(name: String) = getFaction(name)?.tag
+        fun createFaction(name: String, faction: Faction) = FactionsMap.put(name, faction)
 
-    fun getMember(name: String, uuid: UUID) = getFaction(name)?.members?.get(uuid)
+        fun getTag(name: String) = getFaction(name)?.tag
 
-    fun getMemberRole(factionName: String, uuid: UUID) = getFaction(factionName)?.members?.get(uuid)?.role
+        fun getMember(name: String, uuid: UUID) = getFaction(name)?.members?.get(uuid)
 
+        fun getMemberRole(factionName: String, uuid: UUID) = getFaction(factionName)?.members?.get(uuid)?.role
+    }
 }

@@ -1,6 +1,8 @@
 package com.github.kayllondouglas.faction
 
-enum class FactionRole(val suffix: String) {
+enum class FactionRole(
+    val suffix: String
+) {
 
     RECRUIT("+"),
     MEMBER("*"),
